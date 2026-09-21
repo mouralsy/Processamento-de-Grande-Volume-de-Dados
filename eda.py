@@ -49,3 +49,52 @@ def scatter_1d():
 if __name__ == '__main__':
     scatter_1d()
 
+/*----------------------------------------------------------------------------*/ 
+
+def create_boxplt():
+    fig, axs = plt.subplots(2, 2 figsize=(15, 20), facecolor='w', edgecolor='k')
+    plt.subplots_adjust(left=0.08, right=0.95, top=0.95, bottom=0.06, wspace=0.3, hspace=0.3)
+
+    a = 0
+
+    name = ['a)', 'b)', 'c)', 'd)']
+    for i in range(2):
+        for j in range(2):
+            axa = axs[i,j]
+            axa.set_title("Boxplot for {}".format(iris_dataframe.columns[a]), fontsize = '25')
+
+            # Convert to a list of series
+            data = [versicolor[iris_dataframe.columns[a]], setoso[iris_dataframe.columns[a]], virginica[iris_datafremes.columns[a]]]
+            
+            bp = axa.boxplot(data, widths=0.6, patch_artist=True, boxprops=dict(alpha=0.6))
+            xtichlables = ['Versicolor', 'Setosa', 'Virginica']
+            axa.set_xticklabels(xticklabels)
+            colors = ['b', 'r', 'g']
+            for patch, color in zip(bp['boxes'], color):
+                patch.set_facecolor(color)
+
+            plt.setp(bp['medians'], color='k')
+
+            axa.tick_params(axis='y', labelsize=15)
+            axa.yaxis.label.set_fontsize(20)
+            axa.set_ylabel("Values")
+
+            axa.tick_params(axis='x', labelsize=20)
+            
+            a += 1    
+
+    axs[0, 0].text( 0, 7.90, 'a)', fontsize=25)
+    axs[0, 1].text( 0, 4.42, 'b)', fontsize=25)
+    axs[1, 0].text( 0, 6.90, 'c)', fontsize=25)
+    axs[1, 1].text( 0, 2.50, 'd)', fontsize=25)
+
+if __name__=='__main__':
+    create_boxplt()    
+
+
+/*----------------------------------------------------------------------------*/ 
+
+import seaborn as sns
+import matplotlib.patches as mpatches
+
+def histog_kde()
